@@ -5,7 +5,7 @@
 ## underscore
 https://npmjs.com/package/underscore
 - npm i underscore
-- $>$7 million weekly downloads
+- over 7 million weekly downloads
 - JavaScript utility-belt library
 - supports functional suspects such as
   - each
