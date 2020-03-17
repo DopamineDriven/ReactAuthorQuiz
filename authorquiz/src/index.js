@@ -88,12 +88,12 @@ const state = {
 
 // Determine if answer is correct or incorrect
 // to assess, must inspect turnData books collection
-const onAnswerSelected = (answer) => {
+async function onAnswerSelected(answer) {
     // find book in collection such that title = answer user selected
     // this is done via isCorrect
     const isCorrect = state.turnData.author.books.some((book) => book === answer);
     // ternary operation
-    state.highight = isCorrect ? 'correct' : 'incorrect';
+    state.highlight = isCorrect ? 'correct' : 'incorrect';
     // update application with new state via render function
     render();
 }
