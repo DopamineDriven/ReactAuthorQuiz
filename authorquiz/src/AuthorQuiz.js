@@ -13,7 +13,7 @@ const Hero = () => {
   </div>)
 }
 
-// need author property and books property
+// need author prop and books prop
 const Turn = ({ author, books }) => {
   // take the collection of books and print titles in paragraph text
   return (
@@ -46,21 +46,19 @@ const Footer = () => {
   )
 }
 
-class AuthorQuiz extends Component {
-  render() {
-    // container-fluid specifies fluid layout for application
-    // Hero component for Header
-    // Turn component for the central game mechanics
-    // Continue component for button that moves user along 
-    return (
-      <div className="container-fluid">
-        <Hero />
-        <Turn />
-        <Continue />
-        <Footer />
-      </div>
-    )
-  }
+const AuthorQuiz = ({ turnData }) => {
+  // container-fluid specifies fluid layout for application
+  // Hero component for Header
+  // Turn component for the central game mechanics
+  // Continue component for button that moves user along 
+  return (
+    <div className="container-fluid">
+      <Hero />
+      <Turn {...turnData} />
+      <Continue />
+      <Footer />
+    </div>
+  )
 }
 
 export default AuthorQuiz;
