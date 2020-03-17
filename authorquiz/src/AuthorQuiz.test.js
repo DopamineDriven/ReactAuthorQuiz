@@ -25,6 +25,56 @@ describe("Author Quiz", () => {
     const div = document.createElement('div');
     ReactDOM.render(<AuthorQuiz {...state} onAnswerSelected={() =>{}} />, div)
   })
+
+  // use enzyme mount function to render an Author
+  describe("When no answer has been selected", () =>{
+    let wrapper;
+    beforeAll(() => {
+      wrapper = mount(<AuthorQuiz {...state} 
+        onAnswerSelected={() => {}} />)
+    });
+    it("should have unchanged background color", () => {
+      // using wrapper component was rendered into, use .find()
+      // use css selectors
+      // expect empty or lack of background color to be true 
+      expect(wrapper.find("div.row.turn").props()
+      .style.backgroundColor).toBe("")
+    })
+  });
+
+  // incorrect answer selected
+  describe('When the incorrect answer is selected', () => {
+    let wrapper;
+    beforeAll(() => {
+      wrapper = mount(
+        <AuthorQuiz {...(Object.assign({}, state, 
+          {highlight: 'incorrect'}))}
+          onAnswerSelected={()=>{}} />
+      )
+    });
+    // expect red background color
+    it('should have a red background color', () => {
+      expect(wrapper.find('div.row.turn').props()
+      .style.backgroundColor).toBe("red")
+    })
+  });
+
+  // correct answer selected
+  describe('When the correct answer is selected', () => {
+    let wrapper;
+    beforeAll(() => {
+      wrapper = mount(
+        <AuthorQuiz {...(Object.assign({}, state, 
+          {highlight: 'correct'}))}
+          onAnswerSelected={()=>{}} />
+      )
+    });
+    // expect green background color
+    it('should have a green background color', () => {
+      expect(wrapper.find('div.row.turn').props()
+      .style.backgroundColor).toBe("green")
+    })
+  });
 });
 
 // use enzyme npm in conjunction with Jest
