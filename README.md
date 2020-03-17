@@ -2,7 +2,10 @@
 
 ## prop-types
 https://www.npmjs.com/package/prop-types
-Use prop-types to document the intended types of properties passed to components. React checks props passed to components against those definitions, warning development if they don't match.
+- npm i --save prop-types
+- document intended types of properties passed to components
+- react checks props passed to components against those definitions
+- warns development if they don't match
 
 # enzyme & enzyme-adapter-react-16
 https://npmjs.com/package/enzyme
@@ -20,7 +23,7 @@ https://npmjs.com/package/underscore
 - JavaScript utility-belt library
 - supports functional suspects such as
     - each
-    - mapp
+    - map
     - reduce
     - filter
 - all without extending core JavaScript objects  
