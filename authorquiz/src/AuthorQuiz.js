@@ -25,9 +25,20 @@ const Book = ({ title }) => {
 // anytime you render a collection of components via map
 // must provide a key prop with a unique identifier so that
 // react can distinguish individual elements
-const Turn = ({ author, books }) => {
+const Turn = ({ author, books, highlight }) => {
+
+  const highlightToBgColor = (highlight) => {
+    const mapping = {
+      'none': '',
+      'correct': 'green',
+      'incorrect': 'red'
+    }
+    return mapping[highlight]
+  }
+  // change background color to green || red depending on whether
+  // user selects correct || incorrect answer, respectively 
   return (
-    <div className="row turn" style={{ backgroundColor: "white" }}>
+    <div className="row turn" style={{ backgroundColor: highlightToBgColor(highlight) }}>
       <div className="col-4 offset-1">
         <img src={author.imageUrl} className="authorimage" alt="Author"/>
       </div>
@@ -46,7 +57,7 @@ const Continue = () => {
 
 const Footer = () => {
   return (
-    <div id="footer" clssName="row">
+    <div id="footer" className="row">
       <div className="co-12">
         <p className="text-muted credit">
         All images are from <a href="http://commons.wikimedia.org/wiki/Main_Page">Wikemedia Commons</a> and are in the public domain
@@ -56,7 +67,7 @@ const Footer = () => {
   )
 }
 
-const AuthorQuiz = ({ turnData }) => {
+const AuthorQuiz = ({ turnData, highlight }) => {
   // container-fluid specifies fluid layout for application
   // Hero component for Header
   // Turn component for the central game mechanics
@@ -64,7 +75,7 @@ const AuthorQuiz = ({ turnData }) => {
   return (
     <div className="container-fluid">
       <Hero />
-      <Turn {...turnData} />
+      <Turn {...turnData} highlight={highlight} />
       <Continue />
       <Footer />
     </div>
