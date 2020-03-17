@@ -75,11 +75,12 @@ describe("Author Quiz", () => {
       .style.backgroundColor).toBe("green")
     })
   });
-
+  // test an actual user interaction down to DOM click (e) level
   // when first answer [0] is selected
   describe('When the first answer is selected', () => {
     let wrapper;
     // use jest.fn()
+    // this creates a mock function
     const handleAnswerSelected = jest.fn();
     beforeAll(() => {
       wrapper = mount(
@@ -88,11 +89,11 @@ describe("Author Quiz", () => {
       // finding answer and simulating click on position [0]
       wrapper.find('.answer').first().simulate('click');
     });
-
+    // test will fail if CB function has not been called
     it('onAnswerSelected should be called', () => {
       expect(handleAnswerSelected).toHaveBeenCalled()
     });
-    
+    // testing again to ensure value passed from assertion is correct
     it('Should return The Shining via click simulation', () => {
       expect(handleAnswerSelected).toHaveBeenCalledWith("The Shining")
     })
