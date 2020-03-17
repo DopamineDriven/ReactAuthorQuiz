@@ -82,13 +82,27 @@ const getTurnData = (authors) => {
 
 // props received by Turn will be author and books
 const state = {
-    turnData: getTurnData(authors)
+    turnData: getTurnData(authors),
+    highlight: ''
 };
 
-// use spread operator syntax to expand state object out into its properties
-ReactDOM.render(<AuthorQuiz {...state} />, document.getElementById('root'));
+// Determine if answer is correct or incorrect
+// to assess, must inspect turnData books collection
+const onAnswerSelected = (answer) => {
+    // find book in collection such that title = answer user selected
+    // this is done via isCorrect
+    const isCorrect = state.turnData.author.books.some((book) => book === answer);
+    // ternary operation
+    state.highight = isCorrect ? 'correct' : 'incorrect';
+    // update application with new state via render function
+    render();
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+// render function called when script executed and also after app state is updated
+// so that state change flows through UI
+const render = () => {
+    // use spread operator syntax to expand state object out into its properties
+    ReactDOM.render(<AuthorQuiz {...state} onAnswerSelected={onAnswerSelected} />, document.getElementById('root'));
+};
+render();
 serviceWorker.unregister();

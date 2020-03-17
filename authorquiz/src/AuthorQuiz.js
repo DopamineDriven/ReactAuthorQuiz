@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React from 'react';
 import './App.css';
 import './bootstrap.min.css'
 
@@ -13,9 +13,10 @@ const Hero = () => {
   </div>)
 }
 
-const Book = ({ title }) => {
+// onClick handler for highlight property to be responsive (R vs G)
+const Book = ({ title, onClick }) => {
   return (
-    <div className="answer">
+    <div className="answer" onClick={() => {onClick(title)}}>
       <h4>{ title }</h4>
     </div>
   )
@@ -25,8 +26,9 @@ const Book = ({ title }) => {
 // anytime you render a collection of components via map
 // must provide a key prop with a unique identifier so that
 // react can distinguish individual elements
-const Turn = ({ author, books, highlight }) => {
-
+// onAnswerSelected is a prop of the Turn component which means it must
+// be provided by the AuthorQuiz component
+const Turn = ({ author, books, highlight, onAnswerSelected }) => {
   const highlightToBgColor = (highlight) => {
     const mapping = {
       'none': '',
@@ -37,13 +39,17 @@ const Turn = ({ author, books, highlight }) => {
   }
   // change background color to green || red depending on whether
   // user selects correct || incorrect answer, respectively 
+  // convert DOM event onClick into a component event
+  // which is event that is expressed in language of domain model
+  // low level it is a click on a div, but conceptually, the user is selecting an answer
+  // onAnswerSelected will be a prop of the Turn component
   return (
     <div className="row turn" style={{ backgroundColor: highlightToBgColor(highlight) }}>
       <div className="col-4 offset-1">
         <img src={author.imageUrl} className="authorimage" alt="Author"/>
       </div>
       <div className="col-6">
-        {books.map((title) => <Book title={title} key={title} />)}
+        {books.map((title) => <Book title={title} key={title} onClick={onAnswerSelected} />)}
       </div>
     </div>
   )
@@ -67,7 +73,8 @@ const Footer = () => {
   )
 }
 
-const AuthorQuiz = ({ turnData, highlight }) => {
+// onAnswerSelected added as a prop of the AuthorQuiz
+const AuthorQuiz = ({ turnData, highlight, onAnswerSelected }) => {
   // container-fluid specifies fluid layout for application
   // Hero component for Header
   // Turn component for the central game mechanics
@@ -75,7 +82,7 @@ const AuthorQuiz = ({ turnData, highlight }) => {
   return (
     <div className="container-fluid">
       <Hero />
-      <Turn {...turnData} highlight={highlight} />
+      <Turn {...turnData} highlight={highlight} onAnswerSelected={onAnswerSelected} />
       <Continue />
       <Footer />
     </div>
