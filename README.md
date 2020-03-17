@@ -1,13 +1,18 @@
 # ReactAuthorQuiz
 
-## prop-types
+# Technical Overview
 
-https://www.npmjs.com/package/prop-types
-
-- npm i --save prop-types
-- document intended types of properties passed to components
-- react checks props passed to components against those definitions
-- warns development if they don't match
+## underscore
+https://npmjs.com/package/underscore
+- npm i underscore
+- > 7 million weekly downloads
+- JavaScript utility-belt library
+- supports functional suspects such as
+  - each
+  - map
+  - reduce
+  - filter
+- all without extending core JavaScript objects
 ### AuthorQuiz.js
 
  {books.map((title) => <Book title={title} key={title} onClick={onAnswerSelected} />)}
@@ -31,7 +36,7 @@ const answer = sample(fourRandomBooks)
 - shuffle randomizes books drawn, slice ensures the top four are drawn
   // https://www.npmjs.com/package/underscore
 
-# enzyme & enzyme-adapter-react-16
+## enzyme & enzyme-adapter-react-16
 
 https://npmjs.com/package/enzyme
 https://npmjs.com/package/enzyme-adapter-react-16
@@ -42,19 +47,15 @@ https://npmjs.com/package/enzyme-adapter-react-16
 - use { shallow } helper to perform shallow rendering of components
 - created by Airbnb developers
 
-# underscore
+## prop-types
+https://www.npmjs.com/package/prop-types
+- npm i --save prop-types
+- document intended types of properties passed to components
+- react checks props passed to components against those definitions
+- warns development if they don't match
 
-https://npmjs.com/package/underscore
 
-- npm i underscore
-- > 7 million weekly downloads
-- JavaScript utility-belt library
-- supports functional suspects such as
-  - each
-  - map
-  - reduce
-  - filter
-- all without extending core JavaScript objects
+# Quiz
 
 ## When answering questions
 
