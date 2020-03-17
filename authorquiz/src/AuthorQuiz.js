@@ -73,7 +73,7 @@ const Continue = () => {
   return (
     <div></div>
   )
-}
+};
 
 const Footer = () => {
   return (
