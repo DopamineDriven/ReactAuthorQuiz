@@ -75,6 +75,28 @@ describe("Author Quiz", () => {
       .style.backgroundColor).toBe("green")
     })
   });
+
+  // when first answer [0] is selected
+  describe('When the first answer is selected', () => {
+    let wrapper;
+    // use jest.fn()
+    const handleAnswerSelected = jest.fn();
+    beforeAll(() => {
+      wrapper = mount(
+        <AuthorQuiz {...state} 
+        onAnswerSelected={handleAnswerSelected}/>)
+      // finding answer and simulating click on position [0]
+      wrapper.find('.answer').first().simulate('click');
+    });
+
+    it('onAnswerSelected should be called', () => {
+      expect(handleAnswerSelected).toHaveBeenCalled()
+    });
+    
+    it('Should return The Shining via click simulation', () => {
+      expect(handleAnswerSelected).toHaveBeenCalledWith("The Shining")
+    })
+  })
 });
 
 // use enzyme npm in conjunction with Jest
