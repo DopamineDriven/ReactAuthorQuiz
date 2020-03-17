@@ -34,7 +34,6 @@ const answer = sample(fourRandomBooks)
 - getTurnData selects set of possible authors 
 - concatenates books by each author into larger set
 - shuffle randomizes books drawn, slice ensures the top four are drawn
-  // https://www.npmjs.com/package/underscore
 
 ## enzyme & enzyme-adapter-react-16
 
