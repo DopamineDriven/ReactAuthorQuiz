@@ -43,8 +43,11 @@ https://npmjs.com/package/enzyme-adapter-react-16
 - npm i --save-dev enzyme enzyme-adapter-react-16
 - runtime type checking for React props and similar objects
 - use enzyme npm in conjunction with Jest
-- use { shallow } helper to perform shallow rendering of components
 - created by Airbnb developers
+
+import Enzyme, { mount, shallow, render } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter() });
 
 ## prop-types
 https://www.npmjs.com/package/prop-types
