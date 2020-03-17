@@ -73,11 +73,9 @@ const getTurnData = (authors) => {
     // a books title is equal to the answer chosen
     return {
         books: fourRandomBooks,
-        author: authors.find((author) => {
-            author.books.some((title) => {
-                title === answer
-            })
-        })
+        author: authors.find((author) => 
+            author.books.some((title) => 
+                title === answer ))
     }
 };
 
