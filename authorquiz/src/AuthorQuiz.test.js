@@ -11,7 +11,7 @@ describe("Author Quiz", () => {
 });
 
 // use enzyme npm in conjunction with Jest
-// npm i --save-dev enzyme enzyme-adapter-react-16.13
+// npm i --save-dev enzyme enzyme-adapter-react-16
 // use { shallow } helper to perform shallow rendering of react components
 // https://npmjs.com/package/enzyme
 // developed by Airbnb

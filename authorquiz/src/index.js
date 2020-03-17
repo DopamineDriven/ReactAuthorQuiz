@@ -4,6 +4,15 @@ import './index.css';
 import AuthorQuiz from './AuthorQuiz';
 import * as serviceWorker from './serviceWorker';
 
+const authors = [
+    {
+        name: 'Mark Twain',
+        imageUrl: 'images/authors/marktwain.png',
+        imageSource: 'Wikimedia Commons',
+        books: ['The Adventures of Huckleberry Finn']
+    }
+]
+
 ReactDOM.render(<AuthorQuiz />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
