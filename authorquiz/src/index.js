@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 const authors = [
     {
         name: 'Mark Twain',
-        imageUrl: 'images/authors/marktwain.png',
+        imageUrl: "../public/images/authors/marktwain.jpg",
         imageSource: 'Wikimedia Commons',
         books: ['The Adventures of Huckleberry Finn']
     }
