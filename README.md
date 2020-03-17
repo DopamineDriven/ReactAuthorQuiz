@@ -13,9 +13,10 @@ https://npmjs.com/package/underscore
   - reduce
   - filter
 - all without extending core JavaScript objects
+
 ### AuthorQuiz.js
 
- {books.map((title) => <Book title={title} key={title} onClick={onAnswerSelected} />)}
+ {books.map((title) => < Book title={title} key={title} onClick={onAnswerSelected} />)}
 
 
 ### index.js
@@ -67,5 +68,5 @@ https://www.npmjs.com/package/prop-types
 
 ## When answering questions
 
-If answered correctly, game background color -> green
-If answered incorrectly, game background color -> red
+- If answered correctly, game background color -> green
+- If answered incorrectly, game background color -> red
