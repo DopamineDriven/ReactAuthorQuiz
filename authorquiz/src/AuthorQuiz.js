@@ -1,5 +1,4 @@
 import React, { Component} from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
 import './bootstrap.min.css'
 
@@ -26,6 +25,18 @@ const Continue = () => {
   )
 }
 
+const Footer = () => {
+  return (
+    <div id="footer" clssName="row">
+      <div className="co-12">
+        <p className="text-muted credit">
+          All images are from <a href="http://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a> and are in the public domain
+          </p>
+      </div>
+    </div>
+  )
+}
+
 class AuthorQuiz extends Component {
   render() {
     // container-fluid specifies fluid layout for application
@@ -37,6 +48,7 @@ class AuthorQuiz extends Component {
         <Hero />
         <Turn />
         <Continue />
+        <Footer />
       </div>
     )
   }
