@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import AuthorQuiz from './AuthorQuiz';
+import AuthorQuiz from './AuthorQuiz.jsx';
 import * as serviceWorker from './serviceWorker';
 import { shuffle, sample } from 'underscore';
 import { BrowserRouter, Route } from 'react-router-dom';
+import AddAuthorForm from './AddAuthorForm.jsx'
 
 const authors = [
     {
@@ -98,15 +99,6 @@ async function onAnswerSelected(answer) {
     // update application with new state via render function
     render();
 };
-
-// adding form for users to add new authors/books/author image url to application
-// match is a prop supplied by router
-const AddAuthorForm = ({match}) => {
-    return <div>
-        <h1>Add Author</h1>
-<p>{JSON.stringify(match)}</p>
-    </div>
-}
 
 // Wraps Author Quiz element
 const App = () => {
