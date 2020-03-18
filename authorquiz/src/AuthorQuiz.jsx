@@ -69,10 +69,16 @@ Turn.propTypes = {
   highlight: PropTypes.string.isRequired
 };
 
-
-const Continue = () => {
+// ternary conditional
+const Continue = ({ show, onContinue }) => {
   return (
-    <div></div>
+    <div className="row continue">
+        { show 
+        ? <div className="col-11">
+            <button className="btn btn-primary btn-lg float-right" onClick={onContinue}>Continue</button>
+        </div> 
+      : null }
+    </div>
   )
 };
 
@@ -89,7 +95,7 @@ const Footer = () => {
 }
 
 // onAnswerSelected added as a prop of the AuthorQuiz
-const AuthorQuiz = ({ turnData, highlight, onAnswerSelected }) => {
+const AuthorQuiz = ({ turnData, highlight, onAnswerSelected, onContinue }) => {
   // container-fluid specifies fluid layout for application
   // Hero component for Header
   // Turn component for the central game mechanics
@@ -98,7 +104,7 @@ const AuthorQuiz = ({ turnData, highlight, onAnswerSelected }) => {
     <div className="container-fluid">
       <Hero />
       <Turn {...turnData} highlight={highlight} onAnswerSelected={onAnswerSelected} />
-      <Continue />
+      <Continue show={ highlight === 'correct' } onContinue={onContinue} />
       <p>
         <Link to="/add">Add an author</Link>
       </p>
