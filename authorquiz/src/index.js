@@ -100,8 +100,12 @@ async function onAnswerSelected(answer) {
 };
 
 // adding form for users to add new authors/books/author image url to application
-const AddAuthorForm = () => {
-
+// match is a prop supplied by router
+const AddAuthorForm = ({match}) => {
+    return <div>
+        <h1>Add Author</h1>
+<p>{JSON.stringify(match)}</p>
+    </div>
 }
 
 // Wraps Author Quiz element
@@ -113,10 +117,15 @@ const App = () => {
 // so that state change flows through UI
 // wrap component in BrowserRouter to introduce route components
 const render = () => {
-    ReactDOM.render(<BrowserRouter>
-        <Route exact path="/" component={App} /> 
+    ReactDOM.render(
+    <BrowserRouter>
+    <React.Fragment>
+        <Route exact path = "/" component={App} /> 
         <Route path = "/add" component={AddAuthorForm} />
+    </React.Fragment>
     </BrowserRouter>, document.getElementById('root'));
 };
+// React.fragment solves issue of grouping react elements under single parent 
+// fragments are components with no DOM representation 
 render();
 serviceWorker.unregister();
