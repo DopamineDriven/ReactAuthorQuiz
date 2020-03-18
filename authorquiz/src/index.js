@@ -4,6 +4,7 @@ import './index.css';
 import AuthorQuiz from './AuthorQuiz';
 import * as serviceWorker from './serviceWorker';
 import { shuffle, sample } from 'underscore';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 const authors = [
     {
@@ -96,13 +97,26 @@ async function onAnswerSelected(answer) {
     state.highlight = isCorrect ? 'correct' : 'incorrect';
     // update application with new state via render function
     render();
+};
+
+// adding form for users to add new authors/books/author image url to application
+const AddAuthorForm = () => {
+
+}
+
+// Wraps Author Quiz element
+const App = () => {
+    return <AuthorQuiz {...state} onAnswerSelected={onAnswerSelected} />
 }
 
 // render function called when script executed and also after app state is updated
 // so that state change flows through UI
+// wrap component in BrowserRouter to introduce route components
 const render = () => {
-    // use spread operator syntax to expand state object out into its properties
-    ReactDOM.render(<AuthorQuiz {...state} onAnswerSelected={onAnswerSelected} />, document.getElementById('root'));
+    ReactDOM.render(<BrowserRouter>
+        <Route exact path="/" component={App} /> 
+        <Route path = "/add" component={AddAuthorForm} />
+    </BrowserRouter>, document.getElementById('root'));
 };
 render();
 serviceWorker.unregister();
