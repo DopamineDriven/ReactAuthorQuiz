@@ -4,7 +4,7 @@ import './index.css';
 import AuthorQuiz from './AuthorQuiz.jsx';
 import * as serviceWorker from './serviceWorker';
 import { shuffle, sample } from 'underscore';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, withRouter } from 'react-router-dom';
 import AddAuthorForm from './AddAuthorForm.jsx'
 
 const authors = [
@@ -106,9 +106,15 @@ const App = () => {
 }
 
 // wrapper function for onAddAuthor
-const AuthorWrapper = () => {
-    return <AddAuthorForm onAddAuthor={console.log} />
-}
+// existing set of authors stored in array called authors
+// push new author to authors array
+// use withRouter {history} to push author to new path
+const AuthorWrapper = withRouter (({ history }) => {
+    return <AddAuthorForm onAddAuthor={(author) => {
+        authors.push(author)
+        history.push('/')
+    }} />
+})
 
 // render function called when script executed and also after app state is updated
 // so that state change flows through UI
@@ -126,3 +132,13 @@ const render = () => {
 // fragments are components with no DOM representation 
 render();
 serviceWorker.unregister();
+
+
+// withRouter notes
+// You can get access to the history object’s properties and the closest <Route>'s 
+// match via the withRouter higher-order component. withRouter will pass updated 
+// match, location, and history props to the wrapped component whenever it renders.
+// Important
+// withRouter does not subscribe to location changes like React Redux’s connect does for state changes
+// Instead, re-renders after location changes propagate out from the <Router> component
+// withRouter does not re-render on route transitions unless its parent component re-renders
