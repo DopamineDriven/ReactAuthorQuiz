@@ -11,16 +11,16 @@ class AuthorForm extends Component {
             imageURL: ''
         }
     }
-    // use value to bind inputs
+    // use value to bind inputs (name, imageURL)
     render() {
     return <form>
         <div className="AddAuthorForm__input">
             <label htmlFor="name">Name</label>
-            <input type="text" name="name" />
+            <input type="text" name="name" value={this.state.name}/>
         </div>
         <div className="AddAuthorForm__input">
             <label htmlFor="imageURL">Image URL</label>
-            <input type="text" name="imageURL" />
+            <input type="text" name="imageURL" value={this.state.imageURL} />
         </div>
     </form>
     }
