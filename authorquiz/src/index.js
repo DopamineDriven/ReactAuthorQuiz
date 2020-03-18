@@ -83,10 +83,14 @@ const getTurnData = (authors) => {
 
 
 // props received by Turn will be author and books
-const state = {
+const resetState = () => {
+    return {
     turnData: getTurnData(authors),
     highlight: ''
+    }
 };
+
+let state = resetState();
 
 // Determine if answer is correct or incorrect
 // to assess, must inspect turnData books collection
@@ -102,7 +106,12 @@ async function onAnswerSelected(answer) {
 
 // Wraps Author Quiz element
 const App = () => {
-    return <AuthorQuiz {...state} onAnswerSelected={onAnswerSelected} />
+    return <AuthorQuiz {...state} 
+    onAnswerSelected={onAnswerSelected}
+    onContinue={() => {
+        state = resetState();
+        render();
+    }} />
 }
 
 // wrapper function for onAddAuthor
