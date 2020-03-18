@@ -12,10 +12,18 @@ class AuthorForm extends Component {
             imageURL: ''
         }
         // -----------------BINDING--------------------------------
-        // since onFieldChange (method) uses this., data-binding event in constructor required
+        // since onFieldChange and handleSubmit methods use this., 
+        // data-binding event in constructor required
         this.onFieldChange = this.onFieldChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     // -----------------METHODS--------------------------------
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.onAddAuthor(this.state)
+    }
+
     // use onFieldChange to modify default component state
     onFieldChange(e) {
         this.setState({
@@ -25,15 +33,16 @@ class AuthorForm extends Component {
         // -----------------RENDER--------------------------------
     // use value to bind inputs (name, imageURL)
     render() {
-    return <form>
+    return <form onSubmit={this.handleSubmit}>
         <div className="AddAuthorForm__input">
             <label htmlFor="name">Name</label>
             <input type="text" name="name" value={this.state.name} onChange={this.onFieldChange} />
         </div>
         <div className="AddAuthorForm__input">
             <label htmlFor="imageURL">Image URL</label>
-            <input type="text" name="imageURL" value={this.state.imageURL} />
+            <input type="text" name="imageURL" value={this.state.imageURL} onChange={this.onFieldChange} />
         </div>
+        <input type="submit" value="Add" />
     </form>
     }
 }
@@ -42,10 +51,10 @@ class AuthorForm extends Component {
 // adding form for users to add new authors/books/author image url to application
 // match is a prop supplied by router
 // htmlFor prop in label JSX
-const AddAuthorForm = ({match}) => {
+const AddAuthorForm = ({match, onAddAuthor}) => {
     return <div className="AddAuthorForm">
         <h1>Add Author</h1>
-        <AuthorForm />
+        <AuthorForm onAddAuthor={onAddAuthor}/>
     </div>
 }
 

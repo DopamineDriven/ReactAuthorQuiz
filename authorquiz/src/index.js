@@ -105,6 +105,11 @@ const App = () => {
     return <AuthorQuiz {...state} onAnswerSelected={onAnswerSelected} />
 }
 
+// wrapper function for onAddAuthor
+const AuthorWrapper = () => {
+    return <AddAuthorForm onAddAuthor={console.log} />
+}
+
 // render function called when script executed and also after app state is updated
 // so that state change flows through UI
 // wrap component in BrowserRouter to introduce route components
@@ -113,7 +118,7 @@ const render = () => {
     <BrowserRouter>
     <React.Fragment>
         <Route exact path = "/" component={App} /> 
-        <Route path = "/add" component={AddAuthorForm} />
+        <Route path = "/add" component={AuthorWrapper} />
     </React.Fragment>
     </BrowserRouter>, document.getElementById('root'));
 };
